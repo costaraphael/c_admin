@@ -1,32 +1,34 @@
-require 'c_admin/model'
-
 module CAdmin
-
-  mattr_accessor :config
-
   class Config
     class << self
       def setup(&block)
         @config = Config.new
-        block.call @config
+        @config.instance_eval &block
         CAdmin.config = @config
-        p CAdmin.config
+        p Model::Scope.navigation_scope.build_navigation
+      end
+
+      def navigation
+        Model::Scope.navigation_scope.build_navigation
       end
     end
 
     attr_reader :models
 
     def initialize
-      @models = CAdmin::Model::ModelCollection.new;
+      @models = Model::ModelCollection.new;
     end
 
-    def models=(models)
-      models = CAdmin::Model::ModelCollection.new models unless models.is_a? CAdmin::Model::ModelCollection
-      @models = models
-    end
-
-    def register(model, &block)
+    def register_model(model, &block)
       @models.add model, &block
+    end
+
+    def register_models(*models, &block)
+      models.each { |model| register_model model, &block }
+    end
+
+    def navigation_scope(scope)
+      Model::Scope.navigation_scope = scope
     end
   end
 end

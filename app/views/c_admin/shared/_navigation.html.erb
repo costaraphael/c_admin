@@ -1,0 +1,8 @@
+<ul class="nav nav-sidebar">
+  <% navigation.each do |group, navs| %>
+      <li class="text-item"><%= group || t('c_admin.navigation.default_group') %></li>
+      <% navs.each do |nav| %>
+          <li><%= link_to nav[:display_name], '#' %></li>
+      <% end %>
+  <% end %>
+</ul>
