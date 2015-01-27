@@ -1,7 +1,11 @@
 module CAdmin
   class RootController < ApplicationController
-    def index
+    action_type :root
 
+    def index
+      response = action.send(request.method_symbol, params)
+      @data = response.data
+      render response.view
     end
   end
 end

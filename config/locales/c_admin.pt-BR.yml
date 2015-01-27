@@ -2,3 +2,6 @@ pt-BR:
   c_admin:
     navigation:
       default_group: 'Navegação'
+    actions:
+      root:
+        dashboard: 'Home'

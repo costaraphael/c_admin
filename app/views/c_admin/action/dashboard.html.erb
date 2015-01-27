@@ -1,0 +1,5 @@
+<ul>
+<% CAdmin.config.models.each do |model_definition| %>
+    <li><%= model_definition.name %> - quantidade cadastrada: <%= model_definition.model.all.count %></li>
+<% end %>
+</ul>

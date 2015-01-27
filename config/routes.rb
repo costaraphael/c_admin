@@ -1,5 +1,5 @@
 CAdmin::Engine.routes.draw do
-  get '/(:_action)', to: 'root#index', as: 'root'
-  get '/:model/(:_action)', to: 'colletion#index', as: 'collection'
-  get '/:model/:_action/:id', to: 'member#index', as: 'member'
+  match '/(:_action)', to: 'root#index', as: 'root', via: :all
+  match '/:model/(:_action)', to: 'colletion#index', as: 'collection', via: :all
+  match '/:model/:_action/:id', to: 'member#index', as: 'member', via: :all
 end

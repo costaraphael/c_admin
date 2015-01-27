@@ -9,13 +9,13 @@ module CAdmin::Model
 
       private
       def method_missing(method, *args, &block)
-        Scope.scope_for method
+        CAdmin::Scope.scope_for method
         @config[method].instance_eval &block
       end
 
       def configure(&block)
-        Scope.scopes.each do |scope|
-          @config[scope.attr_name].instance_eval &block
+        CAdmin::Scope.each_scope do |scope|
+          @config[scope.identifier].instance_eval &block
         end
       end
     end

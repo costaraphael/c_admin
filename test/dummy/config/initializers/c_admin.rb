@@ -1,6 +1,6 @@
 CAdmin::Config.setup do |config|
   # You can quickly define which models will be managed by CAdmin
-  config.register_models 'MyModel', 'MyModule::MyOtherModel', Endereco
+  config.register_models 'Endereco', 'Pessoa'
 
   # register_model 'Endereco' do
   #   navigation do

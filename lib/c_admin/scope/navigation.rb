@@ -1,4 +1,4 @@
-module CAdmin::Model::Scope
+module CAdmin::Scope
   class Navigation < Base
     include CAdmin::Utils::HasVisibility
 

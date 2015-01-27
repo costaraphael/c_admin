@@ -1,12 +1,12 @@
-module CAdmin::Model::Scope
+module CAdmin::Scope
   class Base
     class << self
 
       def inherited(scope)
-        CAdmin::Model::Scope.register_scope scope
+        CAdmin::Scope.register_scope scope
       end
 
-      def attr_name
+      def identifier
         self.to_s.demodulize.underscore.to_sym
       end
 

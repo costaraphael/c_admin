@@ -1,4 +1,4 @@
-module CAdmin::Model::Scope
+module CAdmin::Scope
   module Fields
     def field(name, type = nil, &block)
       @fields ||= {}

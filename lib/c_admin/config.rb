@@ -5,11 +5,10 @@ module CAdmin
         @config = Config.new
         @config.instance_eval &block
         CAdmin.config = @config
-        p Model::Scope.navigation_scope.build_navigation
       end
 
       def navigation
-        Model::Scope.navigation_scope.build_navigation
+        Scope.navigation_scope.build_navigation
       end
     end
 
@@ -28,7 +27,11 @@ module CAdmin
     end
 
     def navigation_scope(scope)
-      Model::Scope.navigation_scope = scope
+      Scope.navigation_scope = scope.to_sym
+    end
+
+    def default_root_action(action)
+      Action.register_default_action(action.to_sym, :root)
     end
   end
 end

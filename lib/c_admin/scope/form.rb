@@ -1,4 +1,4 @@
-module CAdmin::Model::Scope
+module CAdmin::Scope
   class Form < Base
     include Fields
   end

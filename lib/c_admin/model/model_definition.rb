@@ -5,8 +5,8 @@ module CAdmin::Model
     def initialize(name)
       @name = name
       @config = {}
-      Scope.scopes.each do |scope|
-        @config[scope.attr_name] ||= scope.new self
+      CAdmin::Scope.each_scope do |scope|
+        @config[scope.identifier] ||= scope.new self
       end
     end
 

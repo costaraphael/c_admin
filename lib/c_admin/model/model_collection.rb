@@ -14,7 +14,7 @@ module CAdmin::Model
     def add(model, &block)
       model = model.to_s unless model.is_a? String
       @collection[model] ||= ModelDefinition.new(model)
-      @collection[model].configure &block unless block.nil?
+      @collection[model].configure &block if block_given?
     end
 
     alias_method :push, :add
